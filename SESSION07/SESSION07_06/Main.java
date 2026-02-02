@@ -22,7 +22,7 @@ public class Main {
         for (User u : UserManager.users) {
             System.out.println(u);
         }
-        System.out.println("\n>> Kiểm tra đăng nhập:");
+        System.out.println("\nKiểm tra đăng nhập:");
 
         printLoginResult("dev_a", "123456");
         printLoginResult("dev_a", "1234567");

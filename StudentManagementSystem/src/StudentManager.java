@@ -12,7 +12,6 @@ public class StudentManager {
         this.currentCount = 0;
     }
 
-    // --- CÁC PHƯƠNG THỨC CHỨC NĂNG (Functional Requirements) ---
 
     // [FR1] Thêm sinh viên mới
     public boolean addStudent(Student s) {
@@ -35,6 +34,22 @@ public class StudentManager {
 
     // [FR4] Cập nhật thông tin sinh viên
     public boolean updateStudent(String id, Student newInfo) {
+        for (int i = 0; i < currentCount; i++) {
+            if (students[i] != null && students[i].getStudentId().trim().equalsIgnoreCase(id.trim())) {
+                //Cập nhật thông tin mới
+                students[i].setStudentName(newInfo.getStudentName());
+                students[i].setAge(newInfo.getAge());
+                students[i].setSex(newInfo.isSex());
+                students[i].setMathScore(newInfo.getMathScore());
+                students[i].setPhysicsScore(newInfo.getPhysicsScore());
+                students[i].setChemistryScore(newInfo.getChemistryScore());
+
+               //Tự tính lại điểm trung bình
+                students[i].calculateAvgAndRank();
+
+                return true;
+            }
+        }
         return false;
     }
 
