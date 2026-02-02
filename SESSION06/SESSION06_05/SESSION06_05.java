@@ -1,6 +1,6 @@
 package SESSION05.SESSION05_05;
 
-public class SESSION05_05 {
+public class SESSION06_05 {
     static class Book {
         private int bookId;
         private String title;

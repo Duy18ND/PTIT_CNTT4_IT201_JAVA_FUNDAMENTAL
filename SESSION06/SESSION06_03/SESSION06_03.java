@@ -1,6 +1,6 @@
 package SESSION05.SESSION05_03;
 
-public class SESSION05_03 {
+public class SESSION06_03 {
     //    Thuộc tính private: mã SP, tên SP, giá bán
 //    Tạo getter/setter:
 //    Setter giá phải kiểm tra giá > 0

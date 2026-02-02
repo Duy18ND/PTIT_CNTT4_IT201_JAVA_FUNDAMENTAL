@@ -1,6 +1,6 @@
 package SESSION05.SESSION05_02;
 
-public class SESSION05_02 {
+public class SESSION06_02 {
     static class Account {
         String username;
         String password;
