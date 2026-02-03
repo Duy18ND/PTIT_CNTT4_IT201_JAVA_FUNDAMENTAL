@@ -59,10 +59,6 @@ public class Student {
         return studentId;
     }
 
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
     public void setStudentName(String studentName) {
         this.studentName = studentName;
     }
@@ -104,6 +100,8 @@ public class Student {
             this.chemistryScore = 0;
         }
     }
+
+
     //get AvgScore
     public double getAvgScore() {
         return avgScore;
@@ -136,6 +134,7 @@ public class Student {
     public double getChemistryScore() {
         return chemistryScore;
     }
+
     @Override
     public String toString() {
         return String.format("ID: %s | Tên: %-15s | Tuổi: %d | GT: %s | Toán: %.1f | Lý: %.1f | Hóa: %.1f | TB: %.2f | Loại: %s",

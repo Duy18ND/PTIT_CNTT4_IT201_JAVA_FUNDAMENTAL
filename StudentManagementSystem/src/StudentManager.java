@@ -55,7 +55,6 @@ public class StudentManager {
         }
     }
 
-
     // [FR3] Tìm kiếm sinh viên theo Mã
     public Student findById(String maSV) {
         for (int i = 0; i < currentCount; i++) {
@@ -206,7 +205,6 @@ public class StudentManager {
     }
 
     // [FR8] Thống kê báo cáo
-    // [FR8] THỐNG KÊ - Báo cáo đơn giản
     public void showStatistics() {
         // Nếu chưa có sinh viên nào thì báo và thoát
         if (currentCount == 0) {
@@ -286,10 +284,5 @@ public class StudentManager {
         }
 
         System.out.println("=============================");
-    }
-
-    // Getter lấy số lượng hiện tại (Dùng cho MainApp nếu cần)
-    public int getCurrentCount() {
-        return currentCount;
     }
 }

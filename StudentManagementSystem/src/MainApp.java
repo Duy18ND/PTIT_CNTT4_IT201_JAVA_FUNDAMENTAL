@@ -53,8 +53,8 @@ public class MainApp {
                     String keyword = sc.nextLine().trim();
 
                     Student foundById = manager.findById(keyword);
+
                     if (foundById != null) {
-                        //Tìm sinh viên theo ID
                         System.out.println("Tìm thấy sinh viên theo Mã ID:");
                         System.out.println(foundById.toString());
                     } else {
