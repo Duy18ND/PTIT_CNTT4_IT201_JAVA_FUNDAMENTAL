@@ -5,9 +5,6 @@ import java.util.Scanner;
 public class MainApp {
     public static void main(String[] args) {
         StudentManager manager = new StudentManager();
-        manager.addStudent(new Student("SV001", "Nguyen Van A", 20, true, 8.5, 7.0, 9.0)); // Giỏi
-        manager.addStudent(new Student("SV002", "Tran Thi B", 19, false, 5.0, 6.0, 5.5));  // Trung bình
-        manager.addStudent(new Student("SV003", "Le Van C", 21, true, 7.0, 8.0, 7.5));    // Khá
         Scanner sc = new Scanner(System.in);
         int choice;
 
@@ -18,13 +15,55 @@ public class MainApp {
             sc.nextLine();
 
             switch (choice) {
-                case 1:
+                case 1: //THÊM SINH VIÊN MỚI
+                    System.out.println("--- THÊM SINH VIÊN MỚI ---");
+                    //Nhập thông tin Student
+                    System.out.print("Nhập mã SV: ");
+                    String id = sc.nextLine();
+                    System.out.print("Nhập tên: ");
+                    String name = sc.nextLine();
+                    System.out.print("Nhập tuổi: ");
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Giới tính (true: Nam, false: Nữ): ");
+                    boolean sex = sc.nextBoolean();
+
+                    double m = inputScore(sc, "Toán");
+                    double p = inputScore(sc, "Lý");
+                    double c = inputScore(sc, "Hóa");
+                    sc.nextLine();
+
+                    //Tạo đối tượng
+                    Student newStudent = new Student(id, name, age, sex, m, p, c);
+                    if (manager.addStudent(newStudent)) {
+                        System.out.println("Thêm thành công!");
+                    } else {
+                        System.out.println("Thêm thất bại (Trùng mã hoặc đầy bộ nhớ)!");
+                    }
                     break;
-                case 2:
+
+                case 2: //HIỂN THỊ THÔNG TIN SINH VIÊN
+                    manager.displayAllStudents();
                     break;
-                case 3:
+
+                case 3: //TÌM KIẾM SINH VIÊN THEO MÃ | TÊN
+                    System.out.println("--- TÌM KIẾM SINH VIÊN ---");
+                    System.out.print("Nhập từ khóa (Mã SV hoặc Tên): ");
+                    String keyword = sc.nextLine().trim();
+
+                    Student foundById = manager.findById(keyword);
+                    if (foundById != null) {
+                        //Tìm sinh viên theo ID
+                        System.out.println("Tìm thấy sinh viên theo Mã ID:");
+                        System.out.println(foundById.toString());
+                    } else {
+                        //Tìm sinh viên theo Name
+                        manager.findByName(keyword);
+                    }
                     break;
-                case 4:
+
+                case 4: //CẬP NHẬT THÔNG TIN
                     System.out.println("--- CẬP NHẬT THÔNG TIN ---");
                     //Nhập ID cần sửa
                     System.out.print("Nhập ID sinh viên cần sửa: ");
@@ -60,15 +99,51 @@ public class MainApp {
                             System.out.println("Thất bại: Không tìm thấy mã SV này.");
                         }
                     }
+                    break;
 
+                case 5: //XÓA SINH VIÊN
+                    System.out.print("Nhập mã SV cần xóa: ");
+                    String idDelete = sc.nextLine();
+                    if (manager.deleteStudent(idDelete))
+                        System.out.println("Xóa sinh viên thành công!");
+                    else
+                        System.out.println("Không tìm thấy sinh viên!");
                     break;
-                case 5:
-                    break;
+
                 case 6:
+                    System.out.print("Nhập mã sinh viên: ");
+                    String maSV = sc.nextLine();
+
+                    manager.calculateAvgAndRankById(maSV);
                     break;
+
                 case 7:
+                    System.out.println("\n--- TÙY CHỌN SẮP XẾP ---");
+                    System.out.println("1. Xem Bảng xếp hạng theo Điểm TB (Giảm dần)");
+                    System.out.println("2. Xem Danh sách theo Tên (A-Z)");
+                    System.out.print("Bạn chọn (1 hoặc 2): ");
+
+                    int sortChoice = 0;
+                    if (sc.hasNextInt()) {
+                        sortChoice = sc.nextInt();
+                        sc.nextLine();
+                    } else {
+                        sc.nextLine();
+                    }
+
+                    if (sortChoice == 1) {
+                        manager.showSortedRankTable();
+                    } else if (sortChoice == 2) {
+                        manager.sortByName();
+                        manager.displayAllStudents();
+
+                    } else {
+                        System.out.println("Lựa chọn không hợp lệ!");
+                    }
                     break;
                 case 8:
+                    System.out.println("\n=== THỐNG KÊ ===");
+                    manager.showStatistics();
                     break;
                 case 9:
                     System.out.println("Kết thúc chương trình!");

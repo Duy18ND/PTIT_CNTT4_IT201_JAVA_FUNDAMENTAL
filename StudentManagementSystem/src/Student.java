@@ -29,13 +29,29 @@ public class Student {
         setPhysicsScore(physicsScore);
         setChemistryScore(chemistryScore);
 
+        //Xếp loại + tính điểm trung bình
+        classify();
         calculateAvgAndRank();
     }
 
-    // 3. Các phương thức xử lý (Methods)v
+    // 3. Các phương thức xử lý (Methods)
+    //Xếp loại
+    private void classify() {
+        if (avgScore >= 8 && mathScore >= 6.5 && physicsScore >= 6.5 && chemistryScore >= 6.5) {
+            rank = "Giỏi";
+        } else if (avgScore >= 6.5 && mathScore >= 5 && physicsScore >= 5 && chemistryScore >= 5) {
+            rank = "Khá";
+        } else if (avgScore >= 5) {
+            rank = "Trung bình";
+        } else {
+            rank = "Yếu";
+        }
+    }
 
     // [FR6] Tính điểm TB và Xếp loại
     public void calculateAvgAndRank() {
+        this.avgScore = (mathScore + physicsScore + chemistryScore) / 3;
+        classify();
     }
 
     // Getter & Setter
@@ -87,6 +103,14 @@ public class Student {
             System.out.println("Lỗi: Điểm Hóa phải từ 0 đến 10!");
             this.chemistryScore = 0;
         }
+    }
+    //get AvgScore
+    public double getAvgScore() {
+        return avgScore;
+    }
+    //getRank
+    public String getRank() {
+        return rank;
     }
 
     public String getStudentName() {
