@@ -1,0 +1,5 @@
+package SESSION10.SESSION10_03;
+
+public interface Flyable {
+    void fly();
+}
