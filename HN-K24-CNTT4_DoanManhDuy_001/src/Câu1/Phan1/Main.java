@@ -1,4 +1,4 @@
-package Cau1.Phan1;
+package Câu1.Phan1;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
@@ -23,3 +23,4 @@ public class Main {
         System.out.println("Output: " + sum);
     }
 }
+
