@@ -3,27 +3,41 @@ package Câu2.Phan1;
 import java.util.Scanner;
 
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Nhập n: ");
         int n = sc.nextInt();
-
         int[] arr = new int[n];
 
-        for(int i=0; i<n;i++){
-            System.out.printf("arr[%d] = ",i);
+        for (int i = 0; i < n; i++) {
+            System.out.print("arr[" + i + "] = ");
             arr[i] = sc.nextInt();
         }
-        for (int i=0;i<n -1;i++){
-            int count = 0;
-            if(arr[i] != arr[i +1]) System.out.print("Số "+ arr[i] + " xuất hiện: ");
-            for(int j=1; j< n;j++){
-                if(arr[i] == arr[j]){
-                    count += 1;
+
+        for (int i = 0; i < n; i++) {
+            boolean fount= false;
+
+            for (int j = 0; j < i; j++) {
+                if (arr[i] == arr[j]) {
+                    fount = true;
+                    break;
                 }
             }
-            System.out.println(count);
+
+            if (fount == true) {
+                continue;
+            }
+
+            int count = 0;
+
+            for (int k = i; k < n; k++) {
+                if (arr[i] == arr[k]) {
+                    count++;
+                }
+            }
+
+            System.out.println("Số " + arr[i] + " xuất hiện: " + count + " lần");
         }
     }
 }
