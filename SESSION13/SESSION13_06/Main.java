@@ -140,7 +140,7 @@ public class Main{
         }
 
         if (!found) {
-            System.out.println("Không có thuốc nào giá dưới 50.000 VNĐ.");
+            System.out.println("Không có thuốc nào giá dưới 50000 VNĐ.");
         }
     }
 
